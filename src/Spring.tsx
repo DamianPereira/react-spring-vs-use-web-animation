@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useSprings, animated } from "react-spring";
+import { useSprings, animated, config } from "react-spring";
 
 const SpringAnimated = (): JSX.Element => {
   const [active, setActive] = useState(new Array(5).fill(false));
@@ -8,6 +8,7 @@ const SpringAnimated = (): JSX.Element => {
     console.log("running effect", active);
     api.start((index) => ({
       top: active[index] ? "100%" : "0%",
+      // config: config.wobbly,
       immediate: !active[index],
       onRest: ({ cancelled }) => {
         const newActive = [...active];
